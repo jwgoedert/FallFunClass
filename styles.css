@@ -1,0 +1,18 @@
+#main-greeting {
+    font-style: italic;
+    font-family: monospace;
+    font-size: 42px;
+}
+
+.explanation-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.brand-color-text {
+    color:deeppink;
+}
+
+
+.brand-color-text-2 {
+    color:hotpink;
+}
