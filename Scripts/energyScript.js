@@ -27732,15 +27732,29 @@ let energyData = {
         }
     ]
 }
-console.log(energyData.dataset[0].title);
+// console.log(energyData.dataset[0].title);
 
 let energyArray = energyData.dataset;
 
 for(let i = 0; i < energyArray.length; i++) {
-    console.log(energyArray[i].title);
+    // console.log(energyArray[i].title);
 }
+//fetch info from local file
+fetch("../Data/energy_data.json")
+    .then(response => {
+        console.log('res', response);
+        return response.json();
+    })
+    .then(data => {
+        let newData = data;
+        for (let i = 0; i < data.dataset.length; i++) {
+            let li = document.createElement('li');
+            ul.appendChild(li);
+            li.innerHTML += `${data.dataset[i].title}!`;
+        }
+        console.log('fetch', data);
+    });
 
-// console.log(JSON.stringify(energyData));
 
 
 

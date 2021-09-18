@@ -53,7 +53,44 @@ function isFromOmaha(person){
     }
 }
 
+
+
+let arrayTitles = document.getElementById('array-titles');
+let ul = document.createElement('ul');
+arrayTitles.append(ul);
+
+//Adding JS into HTML
+//write array info to html
 for (var i = 0; i < funClubList.length; i++) {
     // console.log(funClub[i] + " is in the funnest fall class!");
     isFromOmaha(funClubList[i]);
+    let li = document.createElement('li');
+    ul.appendChild(li);
+    li.innerHTML = funClubList[i].firstName;
+    li.style.color = 'Deeppink';
+}
+
+//fetch external data
+var apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto/';
+
+fetch(apiUrl)
+    // fetch('people.json')
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        appendData(data.abilities);
+    })
+    .catch(function (err) {
+        console.log('error: ' + err);
+    });
+function appendData(data) {
+    var mainContainer = document.getElementById("myData");
+    for (var i = 0; i < data.length; i++) {
+        var div = document.createElement("div");
+        console.log(data[i].ability);
+        div.innerHTML = 'Name: ' + data[i].ability.name;//+ ' ' + data[i].lastName;
+        mainContainer.appendChild(div);
+    }
 }
